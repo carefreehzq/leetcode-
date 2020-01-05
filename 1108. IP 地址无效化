@@ -1,0 +1,18 @@
+/*
+输入：address = "1.1.1.1"
+输出："1[.]1[.]1[.]1"
+*/
+
+class Solution {
+public:
+    string defangIPaddr(string address) {
+        auto index=address.find('.');
+        while(index!=string::npos)
+            {
+                address.replace(index,1, "[.]");
+                // 需要注意的就是新的查找从上次找到的索引位置开始
+                index = address.find('.', index+2);
+            }
+        return address;
+    }
+};
